@@ -28,25 +28,25 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [WaifuController::class, 'index']);
 
 //Show create form
-Route::get('/waifus/create', [WaifuController::class, 'create'])->middleware('auth');
+Route::get('/waifus/create', [WaifuController::class, 'create'])->middleware(['auth', 'verified']);
 
 //Store Waifu data
-Route::post('/waifus', [WaifuController::class, 'store'])->middleware('auth');
+Route::post('/waifus', [WaifuController::class, 'store'])->middleware(['auth', 'verified']);
 
 // Show Edit form
-Route::get('/waifus/{waifu}/edit', [WaifuController::class, 'edit'])->middleware('auth');
+Route::get('/waifus/{waifu}/edit', [WaifuController::class, 'edit'])->middleware(['auth', 'verified']);
 
 // Manage Waifus
 Route::get('/waifus/manage', [WaifuController::class, 'manage'])->middleware(['auth', 'verified']);
 
 // Update waifu
-Route::put('/waifus/{waifu}', [WaifuController::class, 'update'])->middleware('auth');
+Route::put('/waifus/{waifu}', [WaifuController::class, 'update'])->middleware(['auth', 'verified']);
 
 //Show single waifu
 Route::get('/waifus/{waifu}', [WaifuController::class, 'show']);
 
 //Delete single waifu
-Route::delete('/waifus/{waifu}', [WaifuController::class, 'destroy'])->middleware('auth');
+Route::delete('/waifus/{waifu}', [WaifuController::class, 'destroy'])->middleware(['auth', 'verified']);
 
 // Send email
 Route::get('/email', [EmailController::class, 'sendEmail']);
@@ -59,9 +59,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('send-testNotification', [TestNotificationController::class, 'sendTestNotification']);
 
-Route::get('/users/{userID}/acceptDean', [App\Http\Controllers\HomeController::class, 'acceptDean'])->name('acceptDean');
+Route::get('/users/{userID}/acceptDean', [App\Http\Controllers\HomeController::class, 'acceptDean'])->name('acceptDean')->middleware(['auth']);
 
-Route::get('/users/{userID}/denyDean', [App\Http\Controllers\HomeController::class, 'denyDean'])->name('denyDean');
+Route::get('/users/{userID}/denyDean', [App\Http\Controllers\HomeController::class, 'denyDean'])->name('denyDean')->middleware(['auth']);
 
 
 // Route::delete('/hello/{id}', function ($id) {

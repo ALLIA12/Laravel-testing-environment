@@ -47,17 +47,27 @@ class HomeController extends Controller
         }
     }
 
-    public function acceptDean()
+    public function acceptDean($userID)
     {
-        $user = User::find(2);
-        $user->isAdmin = true;
-        $user->save();
+        if (Gate::allows('onlyAdmins', auth()->user())) {
+            $user = User::find($userID);
+            $user->isAdmin = true;
+            $user->save();
+            return redirect('/')->with('message', 'User has been made into an admin');
+        } else {
+            return redirect('/')->with('message', 'You are not an admin, you can not allow');
+        }
     }
 
-    public function denyDean()
+    public function denyDean($userID)
     {
-        $user = User::find(2);
-        $user->isAdmin = false;
-        $user->save();
+        if (Gate::allows('onlyAdmins', auth()->user())) {
+            $user = User::find($userID);
+            $user->isAdmin = false;
+            $user->save();
+            return redirect('/')->with('message', 'User was denied being an admin');
+        } else {
+            return redirect('/')->with('message', 'You are not an admin, you can not deny');
+        }
     }
 }

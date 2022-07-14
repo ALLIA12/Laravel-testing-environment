@@ -36,12 +36,16 @@ return [
             'throw' => false,
         ],
 
-        'public' => [
+        // 'public' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public'),
+        //     'url' => env('APP_URL').'/storage',
+        //     'visibility' => 'public',
+        //     'throw' => false,
+        // ],
+        'public_uploads' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-            'throw' => false,
+            'root'   => public_path() . '/images/logos',
         ],
 
         's3' => [
@@ -69,6 +73,7 @@ return [
     |
     */
 
+    // Fuck this, it doesn't work
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],

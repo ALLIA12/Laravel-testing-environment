@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Waifu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -49,7 +50,9 @@ class WaifuController extends Controller
 
 
         if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('logos', 'public');
+            $file = $request->file("image");            
+            $formFields['image'] = $file->store('', ['disk' => 'public_uploads']);
+            //$formFields['image'] = $request->file('image')->store('logos', 'public');
             //                        add the file path ,     upload the file
         }
 

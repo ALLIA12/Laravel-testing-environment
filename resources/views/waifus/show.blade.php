@@ -7,7 +7,7 @@
         <x-card class="p-10">
             <div class="flex flex-col items-center justify-center text-center">
                 <img class="w-48 mr-6 mb-6"
-                    src="{{ $waifu->image ? asset('storage/' . $waifu->image) : asset('images/no-image.png') }}"
+                    src="{{ $waifu->image ? asset('images/logos/' . $waifu->image) : asset('images/no-image.png') }}"
                     alt="" />
                 <h3 class="text-2xl mb-2">{{ $waifu->title }}</h3>
                 <div class="text-xl font-bold mb-4">{{ $waifu->company }}</div>

@@ -1,7 +1,9 @@
  @props(['waifu'])
  <x-card>
      <div class="flex">
-         <img class="hidden w-48 mr-6 md:block" src="{{ $waifu->image ? asset('storage/'.$waifu->image) : asset('images/no-image.png') }}" alt="" />
+         <img class="hidden w-48 mr-6 md:block"
+             src="{{ $waifu->image ? asset('images/logos/' . $waifu->image) : asset('images/no-image.png') }}"
+             alt="" />
          <div>
              <h3 class="text-2xl">
                  <a href="/waifus/{{ $waifu->id }}">{{ $waifu->title }}</a>
