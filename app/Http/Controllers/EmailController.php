@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\AttachmentMail;
 use App\Mail\TestEmail;
+use App\Mail\AttachmentMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
